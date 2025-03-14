@@ -22,7 +22,7 @@ function App() {
     };
 
     const handleKartUpdate = (updatedKart) => {
-        fetch(`<span class="math-inline">\{process\.env\.REACT\_APP\_API\_URL\}/karts/</span>{updatedKart.id}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/karts/${updatedKart.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ function App() {
     };
 
     const handleAddKartToLane = (lane) => {
-        fetch(`<span class="math-inline">\{process\.env\.REACT\_APP\_API\_URL\}/lanes/</span>{lane}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/lanes/${lane}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ function App() {
     };
 
     const handleRemoveKartFromLane = (lane, index) => {
-        fetch(`<span class="math-inline">\{process\.env\.REACT\_APP\_API\_URL\}/lanes/</span>{lane}/${index}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/lanes/${lane}/${index}`, {
             method: 'DELETE',
         }).then(() => {
             fetch(`${process.env.REACT_APP_API_URL}/karts`)
@@ -110,10 +110,7 @@ function App() {
                     <Lane
                         key={index}
                         lane={index}
-                        karts={lanes[index].map((id, index) => {
-                            const kart = karts.find((kart) => kart.id === id);
-                            return kart;
-                        })}
+                        karts={lanes[index]}
                         onRemoveKart={handleRemoveKartFromLane}
                     />
                 ))}
