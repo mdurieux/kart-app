@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const KartModal = ({ kart, onClose, onUpdate, onAddToLane }) => {
     const [type, setType] = useState(kart.type);
-    const [lane, setLane] = useState(kart.lane);
+    const lane = kart.lane; // On récupère lane sans useState
 
     const handleSave = () => {
         onUpdate({ ...kart, type, lane });
