@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Kart = ({ type, position }) => {
+const Kart = ({ kart, onClick, position }) => {
     const colors = {
         fast: 'green',
         medium: 'yellow',
@@ -8,7 +8,7 @@ const Kart = ({ type, position }) => {
     };
 
     const style = {
-        backgroundColor: colors[type],
+        backgroundColor: kart.type ? colors[kart.type] : '#eee',
         width: '50px',
         height: '30px',
         margin: '5px',
@@ -20,8 +20,8 @@ const Kart = ({ type, position }) => {
     };
 
     return (
-        <div style={style}>
-            {position}
+        <div style={style} onClick={onClick}>
+            {position ? position : kart.id}
         </div>
     );
 };

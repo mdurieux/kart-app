@@ -12,11 +12,14 @@ const Lane = ({ lane, karts, onRemoveKart }) => {
 
     return (
         <div style={laneStyle}>
-            {karts.map((kart, index) => (
-                <div key={index} onClick={() => onRemoveKart(lane, index)}>
-                    <Kart type={kart} position={index + 1} />
-                </div>
-            ))}
+            {karts.map((id, index) => {
+                const kart = karts.find((k) => k.id === id);
+                return kart ? (
+                    <div key={kart.id} onClick={() => onRemoveKart(lane, index)}>
+                        <Kart kart={kart} position={index + 1} />
+                    </div>
+                ) : null;
+            })}
         </div>
     );
 };
